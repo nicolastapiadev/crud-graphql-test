@@ -1,0 +1,28 @@
+<ul class="space-y-4">
+    @for (book of books; track book) {
+    <li class="p-4 border rounded">
+        @if (editandoId === book.id) {
+        <!-- Formulario de edición -->
+        <form [formGroup]="editForm" (ngSubmit)="guardarCambios(book.id)" class="space-y-2">
+            <input type="text" formControlName="title" class="border w-full px-2 py-1" />
+            <input type="text" formControlName="author" class="border w-full px-2 py-1" />
+            <div class="flex gap-2 mt-2">
+                <button type="submit" class="bg-green-600 text-white px-3 py-1 rounded">Guardar</button>
+                <button type="button" (click)="cancelarEdicion()" class="text-gray-600">Cancelar</button>
+            </div>
+        </form>
+        } @else {
+        <!-- Vista normal del libro -->
+        <div class="flex justify-between items-center">
+            <div>
+                <strong>{{ book.title }}</strong> — {{ book.author }}
+            </div>
+            <div class="flex gap-2">
+                <button class="text-blue-600" (click)="editarLibro(book)">✏️</button>
+                <button class="text-red-600" (click)="eliminarLibro(book.id)">🗑️</button>
+            </div>
+        </div>
+        }
+    </li>
+    }
+</ul>

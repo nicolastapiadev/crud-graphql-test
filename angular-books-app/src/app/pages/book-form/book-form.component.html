@@ -1,0 +1,17 @@
+<h2 class="text-lg font-semibold mb-2">Agregar nuevo libro</h2>
+
+<form [formGroup]="bookForm" (ngSubmit)="submit()" class="space-y-4">
+    <div>
+        <label>Título:</label>
+        <input type="text" formControlName="title" class="border p-1 w-full" />
+    </div>
+
+    <div>
+        <label>Autor:</label>
+        <input type="text" formControlName="author" class="border p-1 w-full" />
+    </div>
+
+    <button type="submit" [disabled]="bookForm.invalid" class="bg-blue-600 text-white px-4 py-2 rounded">
+        Crear libro
+    </button>
+</form>
