@@ -17,6 +17,7 @@ import { BookModule } from './book/book.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'), // Genera automáticamente el schema
+      path: '/api/heppi', // Path de Endpoint GraphQL
       playground: true, // Habilita el Playground de GraphQL
     }),
     TypeOrmModule.forRoot({
